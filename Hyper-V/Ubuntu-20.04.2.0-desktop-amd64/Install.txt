@@ -1,0 +1,18 @@
+#Setup enhanced session
+
+wget https://raw.githubusercontent.com/Microsoft/linux-vm-tools/master/ubuntu/18.04/install.sh
+sudo chmod +x install.sh
+sudo ./install.sh
+
+# open /etc/xrdp/xrdp.ini (sudo required)
+
+$ sudo gedit /etc/xrdp/xrdp.ini
+
+# Replace
+
+port=vsock://-1:3389
+use_vsock=false
+
+#Set-VM -VMName <your_vm_name>  -EnhancedSessionTransportType HvSocket
+
+Set-VM -VMName Ubuntu-20.04.2.0-desktop-amd64_DevEnv -EnhancedSessionTransportType HvSocket
